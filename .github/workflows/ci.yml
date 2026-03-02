@@ -1,4 +1,4 @@
-name: ci
+name: CI/CD
 
 on:
   push:
@@ -14,5 +14,27 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 20
-      - run : npm install
-      - run : npm build
+      - run: npm install
+      - run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
+            set -e
+            cd cours-ci-cd-fullstack-front-correction/
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart front
+          "
