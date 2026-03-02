@@ -70,21 +70,27 @@ function App() {
 
   return (
     <>
-      <div className="particles">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
+      {/* Matrix rain background */}
+      <div className="matrix-bg">
+        <div className="matrix-col">01001101011000010111010001110010011010010111100000110001</div>
+        <div className="matrix-col">10110100110010101100011011101010111001001101001011101000</div>
+        <div className="matrix-col">01110011011110010111001101110100011001010110110100101110</div>
+        <div className="matrix-col">01100010011100100110010101100001011000110110100000101110</div>
+        <div className="matrix-col">01100001011000110110001101100101011100110111001100101110</div>
+        <div className="matrix-col">01100100011001010110001101110010011110010111000001110100</div>
+        <div className="matrix-col">01110000011100100110111101111000011110010010111000101110</div>
+        <div className="matrix-col">01110010011011110110111101110100010000000110010001100001</div>
+        <div className="matrix-col">01110011011010000110010101101100011011000010000000101101</div>
+        <div className="matrix-col">01100101011110000110010101100011001000000010111100101110</div>
       </div>
+
+      {/* CRT scanline overlay */}
+      <div className="scanline-overlay"></div>
 
       <div className="container">
         <header>
           <h1>Mes Taches</h1>
-          <p className="subtitle">Application de gestion de taches</p>
+          <p className="subtitle">task_manager --mode=darknet</p>
         </header>
 
         {error && <div className="error">{error}</div>}
@@ -94,18 +100,18 @@ function App() {
             type="text"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            placeholder="Nouvelle tache..."
+            placeholder="inject_task --new..."
             className="input"
           />
           <button type="submit" className="btn btn-add">
-            Ajouter
+            EXEC
           </button>
         </form>
 
         {loading ? (
-          <p className="loading">Chargement...</p>
+          <p className="loading">Decrypting data...</p>
         ) : tasks.length === 0 ? (
-          <p className="empty">Aucune tache pour le moment</p>
+          <p className="empty">No active processes</p>
         ) : (
           <ul className="task-list">
             {tasks.map((task) => (
@@ -118,7 +124,7 @@ function App() {
                   onClick={() => deleteTask(task.id)}
                   className="btn btn-delete"
                 >
-                  Supprimer
+                  KILL
                 </button>
               </li>
             ))}
@@ -126,7 +132,7 @@ function App() {
         )}
 
         <footer>
-          <p>Cours CI/CD - Liste de taches</p>
+          <p>darknet_academy // ci-cd module</p>
         </footer>
       </div>
     </>
