@@ -60,7 +60,7 @@ function App() {
 
   async function deleteTask(id) {
     try {
-      const response = await fetch(`/tasks/${id}`, { method: "DELETE" });
+      const response = await fetch(`https://api.aime.abecedaire-studio.com/tasks/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Erreur suppression");
       setTasks(tasks.filter((t) => t.id !== id));
     } catch (err) {
