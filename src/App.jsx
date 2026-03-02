@@ -12,7 +12,7 @@ function App() {
 
   async function fetchTasks() {
     try {
-      const response = await fetch("https://aime.abecedaire-studio.com/tasks");
+      const response = await fetch("https://api.aime.abecedaire-studio.com/tasks");
       if (!response.ok) throw new Error("Erreur serveur");
       const data = await response.json();
       setTasks(data);
@@ -29,7 +29,7 @@ function App() {
     if (!newTitle.trim()) return;
 
     try {
-      const response = await fetch("https://aime.abecedaire-studio.com/tasks", {
+      const response = await fetch("https://api.aime.abecedaire-studio.com/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newTitle }),
@@ -45,7 +45,7 @@ function App() {
 
   async function toggleTask(task) {
     try {
-      const response = await fetch(`https://aime.abecedaire-studio.com/tasks/${task.id}`, {
+      const response = await fetch(`https://api.aime.abecedaire-studio.com/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: task.title, done: !task.done }),
