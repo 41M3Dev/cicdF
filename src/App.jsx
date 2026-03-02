@@ -69,54 +69,67 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <header>
-        <h1>Mes Taches</h1>
-        <p className="subtitle">Application de gestion de taches</p>
-      </header>
+    <>
+      <div className="particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
 
-      {error && <div className="error">{error}</div>}
+      <div className="container">
+        <header>
+          <h1>Mes Taches</h1>
+          <p className="subtitle">Application de gestion de taches</p>
+        </header>
 
-      <form onSubmit={addTask} className="add-form">
-        <input
-          type="text"
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-          placeholder="Nouvelle tache..."
-          className="input"
-        />
-        <button type="submit" className="btn btn-add">
-          Ajouter
-        </button>
-      </form>
+        {error && <div className="error">{error}</div>}
 
-      {loading ? (
-        <p className="loading">Chargement...</p>
-      ) : tasks.length === 0 ? (
-        <p className="empty">Aucune tache pour le moment</p>
-      ) : (
-        <ul className="task-list">
-          {tasks.map((task) => (
-            <li key={task.id} className={`task ${task.done ? "done" : ""}`}>
-              <div className="task-content" onClick={() => toggleTask(task)}>
-                <span className="checkbox">{task.done ? "[x]" : "[ ]"}</span>
-                <span className="task-title">{task.title}</span>
-              </div>
-              <button
-                onClick={() => deleteTask(task.id)}
-                className="btn btn-delete"
-              >
-                Supprimer
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+        <form onSubmit={addTask} className="add-form">
+          <input
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            placeholder="Nouvelle tache..."
+            className="input"
+          />
+          <button type="submit" className="btn btn-add">
+            Ajouter
+          </button>
+        </form>
 
-      <footer>
-        <p>Cours CI/CD - Liste de taches</p>
-      </footer>
-    </div>
+        {loading ? (
+          <p className="loading">Chargement...</p>
+        ) : tasks.length === 0 ? (
+          <p className="empty">Aucune tache pour le moment</p>
+        ) : (
+          <ul className="task-list">
+            {tasks.map((task) => (
+              <li key={task.id} className={`task ${task.done ? "done" : ""}`}>
+                <div className="task-content" onClick={() => toggleTask(task)}>
+                  <span className="checkbox">{task.done ? "[x]" : "[ ]"}</span>
+                  <span className="task-title">{task.title}</span>
+                </div>
+                <button
+                  onClick={() => deleteTask(task.id)}
+                  className="btn btn-delete"
+                >
+                  Supprimer
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <footer>
+          <p>Cours CI/CD - Liste de taches</p>
+        </footer>
+      </div>
+    </>
   );
 }
 
