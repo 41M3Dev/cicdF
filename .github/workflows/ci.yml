@@ -32,7 +32,7 @@ jobs:
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
             set -e
-            cd cicdF/
+            cd cicdF/back/
             git pull origin main
             npm install
             npm run build
