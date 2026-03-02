@@ -87,6 +87,32 @@ function App() {
       {/* CRT scanline overlay */}
       <div className="scanline-overlay"></div>
 
+      {/* Top Navbar */}
+      <nav className="navbar">
+        <div className="nav-left">
+          <span className="nav-logo">
+            <span className="nav-logo-bracket">[</span>
+            <span className="nav-logo-text">DRK</span>
+            <span className="nav-logo-bracket">]</span>
+          </span>
+          <span className="nav-separator">|</span>
+          <span className="nav-link active">_tasks</span>
+          <span className="nav-link">_logs</span>
+          <span className="nav-link">_network</span>
+          <span className="nav-link">_config</span>
+        </div>
+        <div className="nav-right">
+          <span className="nav-status">
+            <span className="nav-status-dot"></span>
+            ENCRYPTED
+          </span>
+          <span className="nav-separator">|</span>
+          <span className="nav-uptime">SYS_UP: 99.7%</span>
+          <span className="nav-separator">|</span>
+          <span className="nav-user">root@darknet</span>
+        </div>
+      </nav>
+
       <div className="container">
         <header>
           <h1>Mes Taches</h1>
